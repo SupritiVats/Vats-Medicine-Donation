@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="js/jquery-1.8.2.min.js"></script>
+  <style>
+    .card
+    {
+        margin-left: 24px;
+        margin-top: 250px;
+        height: 350px;
+    }
+  </style>
+  <script>
+    $(document).ready(function(){
+       $("#needyupdate").click(function(){
+         var url="/needysettings?txtNEmail=" + $("#txtNEmail").val() + "&&txtOPass=" + $("#txtOPass").val() + "&&txtNPass=" + $("#txtNPass").val();
+         $.get(url,function(resp){
+           alert(resp);
+         })
+       })
+       $("#logout1").click(function(){
+          
+          //alert();
+          localStorage.removeItem("activeUser");  
+          window.location.replace("/index.html");
+         })
+     })
+ </script>
+</head>
+  <body>
+    <nav class="navbar bg-primary">
+      
+        <div class="container-fluid  " >
+          <img src="mypics/vats md.png" alt="" width="100" height="75" style="margin:-12px; ">
+      <span class="navbar-brand mb-0 h1"
+        style="color: white;margin-left:45px; font-size: 30px; font-family:Georgia, 'Times New Roman', Times, serif ;">DASH NEEDY</span>
+        </div>
+      </nav> 
+      <!-- all cards -->
+
+    
+
+      <div class="container">
+               <div class="row">
+                <div class="container d-flex justify-content-center mt-1">
+                  <div class="card border border-primary border-2 mt-5 col-md-3"   >
+                    <img src="mypics/needy pic.jpg" class="card-img-top" style="margin-top: 10px;" width="50%" height="50%" alt="...">
+                    <div class="card-body">
+                     <center>
+                      <h5 class="card-title">PROFILE</h5>
+                     </center>
+                      
+                      <center>
+                        <a href="profile-needy.html" class="btn btn-primary id">CLICK HERE</a>
+                      </center>
+                    </div>
+                  </div>
+                  <!---->
+                  <div class="card border border-primary border-2 mt-5 col-md-3" >
+                    <img src="mypics/search medicine.png" class="card-img-top" style="margin-top: 10px;" width="50%" height="50%" alt="...">
+                    <div class="card-body">
+                      <center>
+                        <h5 class="card-title">SEARCH MEDICINE</h5>
+                      </center>
+                     
+                      <center>
+                        <a href="needy-med-search.html" class="btn btn-primary">CLICK HERE</a>
+                      </center>
+                    </div>
+                  </div>
+                  <!-- /./../. -->
+                  <div class="card border border-primary border-2 mt-5 col-md-3" >
+                    <img src="mypics/settings.png" class="card-img-top" style="margin-top: 10px;" width="50%" height="50%" alt="...">
+                    <div class="card-body">
+                    <center>
+                      <h5 class="card-title">SETTINGS</h5>
+                    </center>
+                      
+                      <center>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#setting">
+                          CLICK HERE
+                        </button>
+                      </center>
+                    </div>
+                  </div>
+                  <!---->
+                  <div class="card border border-primary border-2 mt-5 col-md-3" >
+                    <img src="mypics/logout.png" class="card-img-top" style="margin-top: 10px;" width="50%" height="50%" alt="...">
+                    <div class="card-body">
+                      <center>
+                        <h5 class="card-title">LOGOUT</h5>
+                        <a href="" id="logout1" class="btn btn-primary">CLICK HERE</a>
+                      </center>
+                    </div>
+                  </div>
+                  
+                  </div>
+                </div>
+               </div>
+      </div>
+
+<!-- SETTINGS -->
+      <div class="modal fade" id="setting" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Setting</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form class="row g-3">
+                <div class="col-md-12">
+                  <label for="txtUEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="txtNEmail" name="txtNEmail">
+                </div>
+                <div class="col-md-12">
+                  <label for="txtUPass" class="form-label">Old Password</label>
+                  <input type="password" class="form-control" id="txtOPass" name="txtOPass">
+                </div>
+                <div class="col-md-12">
+                  <label for="txtNewPass" class="form-label">New Password</label>
+                  <input type="password" class="form-control" id="txtNPass" name="txtNPass">
+                </div>
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+              <button type="button" class="btn btn-primary" id="needyupdate">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!---->
+      <br><br> <br><br><br>
+      <div class="footer" style="background-color: rgb(116, 128, 238); height:40px;">
+        <span  style="color: rgb(19, 18, 18); font-size: 20px; font-family:Georgia, 'Times New Roman', Times, serif ;"> <center>
+          © COPYRIGHT 2022  VATS MEDICINE DONOR ALL RIGHTS RESERVED 
+        </center>
+        </span>
+      </div>
+      
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
