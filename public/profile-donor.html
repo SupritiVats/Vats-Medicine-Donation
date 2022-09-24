@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PROFILE DONOR</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+    <script src="js/jquery-1.8.2.min.js"></script>
+  <script>
+    function loadidFile(ref) {
+      var image = document.getElementById('prev');
+      image.src = URL.createObjectURL(ref.files[0]);
+    }
+    function loadpicFile(ref1) {
+      var image1 = document.getElementById('prev1');
+      image1.src = URL.createObjectURL(ref1.files[0]);
+    }
+  </script>
+  <script>
+    $(document).ready(function () {
+
+ var activeUser=localStorage.getItem("activeUser");
+ $("#txtEmail").val(activeUser).prop("readonly",true);
+ alert(activeUser);
+
+
+      $("#btnSearch").click(function () {
+        var emailid = $("#txtEmail").val();
+        var url = "/getProfileObject?txtEmail=" + emailid;
+        $.getJSON(url, function (responseKuchJSONAryObject) // json for getting search all coressponding details
+        {
+          if (responseKuchJSONAryObject.length == 0)
+            alert("Invalid Id");
+          else {
+            alert(JSON.stringify(responseKuchJSONAryObject));
+            //now assign ids to all form controls
+            $("#txtName").val(responseKuchJSONAryObject[0].name);
+            $("#txtMobile").val(responseKuchJSONAryObject[0].mobile);
+            $("#txtAddr").val(responseKuchJSONAryObject[0].address);
+            $("#txtCity").val(responseKuchJSONAryObject[0].city);
+            $("#idproof").val(responseKuchJSONAryObject[0].prooftype);
+            $("#txtTime").val(responseKuchJSONAryObject[0].timings);
+
+            $("#prev").prop("src", "uploads/" + responseKuchJSONAryObject[0].proofpic);
+
+            $("#prev1").prop("src", "uploads/" + responseKuchJSONAryObject[0].profilepic);
+
+            $("#hdn1").val(responseKuchJSONAryObject[0].proofpic);
+
+            $("#hdn2").val(responseKuchJSONAryObject[0].profilepic);
+
+
+
+          }
+         
+
+        });
+      });
+    });
+  </script>
+
+</head>
+
+<body>
+  <nav class="navbar bg-primary">
+      
+    <div class="container-fluid  " >
+      <img src="mypics/vats md.png" alt="" width="100" height="75" style="margin:-12px; ">
+  <span class="navbar-brand mb-0 h1"
+    style="color: white;margin-left:45px; font-size: 30px; font-family:Georgia, 'Times New Roman', Times, serif ;">
+  DONOR PROFILE</span>
+    </div>
+  </nav> 
+  <!--FORM CONTROL-->
+  <div style="margin-top:100px ;">
+    <div class="container  " style="border: 2px solid blue; padding: 20px; ">
+      <form class="row g-3 mt-2  " method="post" enctype="multipart/form-data">
+        
+        
+        <input type="hidden" id="hdn1" name="hdn1">
+        <input type="hidden" id="hdn2" name="hdn2">
+
+
+        <div class="col-md-9">
+          <label for="inputEmail4" class="form-label">EMAIL ID</label>
+          <input type="email" class="form-control" id="txtEmail" name="txtEmail">
+        </div>
+        <div class="col-md-2">
+          <label for="" class="form-label"> &nbsp;</label>
+          <input type="button" class="btn btn-outline-primary form-control" name="btnSearch"  id="btnSearch" value="Search">
+
+        </div>
+        <div class="col-md-6">
+          <label for="" class="form-label">NAME</label>
+          <input type="txt" class="form-control" id="txtName" name="txtName">
+        </div>
+        <div class="col-md-6">
+          <label for="" class="form-label">MOBILE NUMBER</label>
+          <input type="text" class="form-control" id="txtMobile" name="txtMobile">
+        </div>
+        <div class="col-9">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" name="txtAddr" id="txtAddr" >
+        </div>
+        <div class="col-md-3 ">
+          <label for="inputCity" class="form-label">City</label> <br>
+   
+         
+          <input type="text" name="txtCity" list="txtCity1" id="txtCity" />
+          <datalist id="txtCity1" >
+            <option value="Bombay">Bombay</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bathinda">Bathinda</option>
+            <option value="Patna">Patna</option>
+            <option value="Mokama">Mokama</option>
+            <option value="Jalandhar">Jalandhar</option>
+            <option value="Noida">Noida</option>
+            <option value="Agra">Agra</option>
+
+
+          </datalist>
+        </div>
+
+        
+
+
+        <div class="col-md-6">
+          <label for="inputState" class="form-label">SELECT ID PROOF</label>
+          <select id="idproof" name="idproof" class="form-select">
+            <option selected>Choose...</option>
+            <option value="ADHAAR CARD" selected>ADHAAR CARD</option>
+            <option value="VOTERID CARD">VOTERID CARD</option>
+          </select>
+        </div>
+        <div class="col-md-6 ">
+          <label for="inputCity" class="form-label">CONTACT TIME</label>
+          <input type="text" class="form-control" id="txtTime" name="txtTime">
+        </div>
+
+
+
+
+        <div class="row mt-2">
+          <div class="col-md-4">
+            <label class="form-label">SELECT ID PIC</label><br>
+            <input type="file" id="proofPic" name="proofPic" onchange="loadidFile(this);">
+          </div>
+
+          <div class="col-md-2">
+            <img src="" id="prev" width="100" height="100">
+          </div>
+
+
+
+          <div class="col-md-4">
+            <label class="form-label">SELECT PROFILE PIC </label>
+            <input type="file" id="profilePic" name="profilePic" onchange="loadpicFile(this);">
+          </div>
+
+          <div class="col-md-2">
+            <img src="" id="prev1" width="100" height="100">
+          </div>
+
+        </div>
+
+        <div class="row mt-2 justify-content-center ">
+
+          <div class="col-md-2 " style="margin-top:40px">
+            <input type="submit" formaction="/profile-process" class="btn btn-outline-primary form-control"
+               value="Save">
+          </div>
+          <div class="col-md-2 justify-content-end" style="margin-top:40px">
+            <input type="submit" formaction="/profile-update" class="btn btn-outline-primary form-control" value="Upadte">
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+<br>
+  <div class="footer" style="background-color: rgb(116, 128, 238); height:40px;">
+    <span  style="color: rgb(19, 18, 18); font-size: 20px; font-family:Georgia, 'Times New Roman', Times, serif ;"> <center>
+      © COPYRIGHT 2022  VATS MEDICINE DONOR ALL RIGHTS RESERVED 
+    </center>
+    </span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
