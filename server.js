@@ -9,6 +9,7 @@ var dbconfigurationobject = {
   user: "root",
   password: "",
   database: "medicinedonarproject",
+  
 };
 
 var dbref = getmysql.createConnection(dbconfigurationobject);
@@ -54,20 +55,31 @@ receivedexpress.get("/signup", function (req, res) {
   //===========node mailer=======================
   const nodemailer = require("nodemailer");
   //
-
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "vatsmedicinedonation2022@gmail.com",
-      pass: "qstxabojdhkbylxs",
+        user: "vatsmedicinedonation2022@gmail.com",
+        pass: "rqbhonvgppfdjzgr",
     },
-  });
+    tls: {
+        rejectUnauthorized: false // Disable certificate verification
+    }
+});
+
+  // let transporter = nodemailer.createTransport({
+  //   service: "gmail",
+  //   auth: {
+  //     user: "vatsmedicinedonation2022@gmail.com",
+  //     pass: "ogkgesjjeibbuitp",
+  //     //ogkgesjjeibbuitp
+  //   },
+  // });
 
   const options = {
     from: "vatsmedicinedonation2022@gmail.com",
     to: req.query.txtEmail,
     subject: "Medicine Donation",
-    text: "Welcome to Medicine donation Family",
+    text: "Welcome to Medicine donation Family! \n This side Supriti Vats. \n Hope you are doing well.\n Make your day good with sharing! \n\n\n Thanks! \n\n Lovely Professional University. ",
   };
 
   transporter.sendMail(options, function (err, info) {
@@ -234,28 +246,28 @@ receivedexpress.post("/profile-update", function (req, resp) {
       else console.log("Badhaiiiiiiii ho ");
     });
   } else {
-  /*else if(req.files!=null)
-     {
-        fname=req.body.txtEmail+"-"+req.files.profilePic.name;
-        var des=process.cwd()+"/public/uploads/"+fname;
-        req.files.profilePic.mv(des,function(err){
-                if(err)
-                    console.log(err);
-                else
-                    console.log("Badhaiiiiiiii ho ");
-        })
-     }
-
-     else if(req.files!=null)
-     {
-        proofpic=req.body.txtEmail+"-"+req.files.proofPic.namew
-    req.files.proofPic.mv(des1,function(err){
-            if(err)
-                console.log(err);
-            else
-                console.log("Badhaiiiiiiii ho ");
-    })
-     }*/
+    /*else if(req.files!=null)
+       {
+          fname=req.body.txtEmail+"-"+req.files.profilePic.name;
+          var des=process.cwd()+"/public/uploads/"+fname;
+          req.files.profilePic.mv(des,function(err){
+                  if(err)
+                      console.log(err);
+                  else
+                      console.log("Badhaiiiiiiii ho ");
+          })
+       }
+  
+       else if(req.files!=null)
+       {
+          proofpic=req.body.txtEmail+"-"+req.files.proofPic.namew
+      req.files.proofPic.mv(des1,function(err){
+              if(err)
+                  console.log(err);
+              else
+                  console.log("Badhaiiiiiiii ho ");
+      })
+       }*/
     proofpic = req.body.hdn1;
     fname = req.body.hdn2;
   }

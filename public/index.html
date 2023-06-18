@@ -17,7 +17,7 @@
     }
   </style>
   <script>
-    $(document).ready(function () {
+    $(document).ready( () => {
       $("#txtEmail").blur(function () {
         //AJAX request Firing=========================
         var url = "/chkEmailKuch?txtEmail=" + $("#txtEmail").val();
@@ -26,14 +26,17 @@
         });
 
       });
+
+
       $("#sendsignup").click(function () {
         var url = "/signup?txtEmail=" + $("#txtEmail").val() + "&&txtPass=" + $("#txtPass").val() + "&&utype=" + $("#utype").val();
         $.get(url, function (resp) {
-          alert(resp);
+          alert(resp);//
         })
       })
       $("#sendlogin").click(function () {
         var url = "/login?loginEmail=" + $("#loginEmail").val() + "&&loginPassword=" + $("#loginPassword").val();
+
         $.getJSON(url, function (jsonobject) {
           if (jsonobject.length == 0) {
             alert("Invalid Email/Password or Expired");
@@ -274,15 +277,17 @@
           </h5>
           <div class="row d-flex justify-content-center mt-1">
             <div class="pic" style=" height: 300px; width: 200px; ">
-              <img height="200" src="mypics/mypic.jpg" class="card-img-top" style="border-radius: 45%;"  alt="...">
+              <img height="200" src="mypics/profilepic.jpeg" class="card-img-top" style="border-radius: 45%;"  alt="...">
             </div>
             <div class="pic" style=" height: 100px; width: 300px;"> <br>
             <h6>Name : Suprit Vats</h6>
             <h6>College : Lovely Professional University</h6>
-            <h6>Semester : Fourth</h6>
+            <h6>Semester : Sixth</h6>
             <h6>Email : supritivats@gmail.com</h6>
             <h6>Contact : 7870119939</h6> <br> <br>
-            <a href="https://www.linkedin.com/in/supriti-vats-8065601b7?originalSubdomain=in" class="btn btn-primary">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/supriti-vats-8065601b7/" class="btn btn-primary">LinkedIn</a>
+            <a href="https://github.com/SupritiVats/" class="btn btn-primary">GitHub</a>
+            <a href="https://leetcode.com/Supriti_Vats/" class="btn btn-primary">Leetcode</a>
             </div>
           </div>
         </div>
