@@ -3,13 +3,12 @@ receivedexpress = getexpress();
 var getmysql = require("mysql");
 var fileuploader = require("express-fileupload");
 
-//=================mysql connection=========================================
+//=================mysql connection=================================================
 var dbconfigurationobject = {
   host: "localhost",
   user: "root",
   password: "",
   database: "medicinedonarproject",
-  
 };
 
 var dbref = getmysql.createConnection(dbconfigurationobject);
@@ -18,7 +17,7 @@ dbref.connect(function (err) {
   if (err) {
     console.log(err);
   } else {
-    console.log("connected.."); //
+    console.log("connected..");
   }
 });
 
@@ -34,7 +33,7 @@ receivedexpress.get("/", function (req, resp) {
   resp.sendFile(purapath);
 });
 
-//========================================== login and signup=========================
+//========================================= login and signup=========================
 receivedexpress.get("/signup", function (req, res) {
   var dataarr = [req.query.txtEmail, req.query.txtPass, req.query.utype];
   dbref.query(
@@ -58,13 +57,13 @@ receivedexpress.get("/signup", function (req, res) {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: "vatsmedicinedonation2022@gmail.com",
-        pass: "rqbhonvgppfdjzgr",
+      user: "vatsmedicinedonation2022@gmail.com",
+      pass: "rqbhonvgppfdjzgr",
     },
     tls: {
-        rejectUnauthorized: false // Disable certificate verification
-    }
-});
+      rejectUnauthorized: false, // Disable certificate verification
+    },
+  });
 
   // let transporter = nodemailer.createTransport({
   //   service: "gmail",
@@ -104,7 +103,7 @@ receivedexpress.get("/login", function (req, res) {
     }
   );
 });
-//===========================
+//=====================================
 /*receivedexpress.get("/login",function(req,res){
 
     dbref.query("select * from users where email=? and pwd=?",[req.query.loginEmail,req.query.loginPassword],function(err,result){
@@ -188,7 +187,7 @@ receivedexpress.post("/profile-process", function (req, resp) {
     dataAry,
     function (err, result) {
       if (err) resp.send(err);
-      else resp.send("Inserted Successfully..");
+      else resp.send('<script>alert("Inserted Successfully..");</script>');
     }
   );
 });

@@ -30,8 +30,20 @@
          })
      })
  </script>
+   <style>
+     .body-bg {
+      
+      background-image: url('mypics/needy_bg.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+   </style>
 </head>
-  <body>
+
+
+  <body class="body-bg">
     <nav class="navbar bg-primary">
       
         <div class="container-fluid  " >
@@ -43,7 +55,7 @@
       <!-- all cards -->
 
     
-
+      <div style="margin: auto; margin-top: 100px;"> 
       <div class="container">
                <div class="row">
                 <div class="container d-flex justify-content-center mt-1">
@@ -55,7 +67,7 @@
                      </center>
                       
                       <center>
-                        <a href="profile-needy.html" class="btn btn-primary id">CLICK HERE</a>
+                        <a href="profile-needy.html" class="btn btn-primary id" style="margin-top: 30px;">CLICK HERE</a>
                       </center>
                     </div>
                   </div>
@@ -68,7 +80,7 @@
                       </center>
                      
                       <center>
-                        <a href="needy-med-search.html" class="btn btn-primary">CLICK HERE</a>
+                        <a href="needy-med-search.html" class="btn btn-primary" style="margin-top: 30px;">CLICK HERE</a>
                       </center>
                     </div>
                   </div>
@@ -77,11 +89,11 @@
                     <img src="mypics/settings.png" class="card-img-top" style="margin-top: 10px;" width="50%" height="50%" alt="...">
                     <div class="card-body">
                     <center>
-                      <h5 class="card-title">SETTINGS</h5>
+                      <h5 class="card-title" >SETTINGS</h5>
                     </center>
                       
                       <center>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#setting">
+                        <button type="button" class="btn btn-primary"  style="margin-top: 30px;" data-bs-toggle="modal" data-bs-target="#setting">
                           CLICK HERE
                         </button>
                       </center>
@@ -93,7 +105,7 @@
                     <div class="card-body">
                       <center>
                         <h5 class="card-title">LOGOUT</h5>
-                        <a href="" id="logout1" class="btn btn-primary">CLICK HERE</a>
+                        <a href="#" id="logout1" class="btn btn-primary" style="margin-top: 30px;">CLICK HERE</a>
                       </center>
                     </div>
                   </div>
@@ -102,6 +114,7 @@
                 </div>
                </div>
       </div>
+    </div>
 
 <!-- SETTINGS -->
       <div class="modal fade" id="setting" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -128,21 +141,21 @@
             </div>
             <div class="modal-footer">
               <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-              <button type="button" class="btn btn-primary" id="needyupdate">Update</button>
+              <button type="button" class="btn btn-primary" id="needyupdate" >Update</button>
             </div>
           </div>
         </div>
       </div>
   
       <!---->
-      <br><br> <br><br><br>
+      <!-- <br><br> <br><br><br>
       <div class="footer" style="background-color: rgb(116, 128, 238); height:40px;">
         <span  style="color: rgb(19, 18, 18); font-size: 20px; font-family:Georgia, 'Times New Roman', Times, serif ;"> <center>
           © COPYRIGHT 2022  VATS MEDICINE DONOR ALL RIGHTS RESERVED 
         </center>
         </span>
       </div>
-      
+       -->
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
